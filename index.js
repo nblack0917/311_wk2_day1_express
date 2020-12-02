@@ -78,13 +78,24 @@ app.put('/users/:id/:name', (req, res) => {
 //   res.send(`deleted`)
 
 // Delete specified user from array
+// app.delete('/users/:id', (req, res) => {
+//   const userId = req.params.id
+//   for (let user of users) {
+//     if (user._id === parseInt(userId)) {
+//       let index = users.indexOf(user)
+//       users.splice(index, 1)
+//       res.json(users)
+//       res.send(`deleted user # ${userId}`)
+//     }
+//   }
+// })
+
+// Add isActive: false to user object
 app.delete('/users/:id', (req, res) => {
   const userId = req.params.id
   for (let user of users) {
     if (user._id === parseInt(userId)) {
-      let index = users.indexOf(user)
-      users.splice(index, 1)
-      res.json(users)
+      user.isActive = false;
       res.send(`deleted user # ${userId}`)
     }
   }
